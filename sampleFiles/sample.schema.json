@@ -1,5 +1,5 @@
 {
-  "description": "Auto-Generated JSON Schema for JSON File (geokoord/json-schema-deriver)",
+  "description": "Auto-Generated JSON Schema for JSON File using json-schema-deriver (https://github.com/geokoord/json-schema-deriver)",
   "title": "JSON File",
   "additionalProperties": false,
   "$schema": "http://json-schema.org/draft-04/schema#",

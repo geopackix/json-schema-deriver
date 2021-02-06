@@ -20,7 +20,7 @@ function getNewSchema(name = "JSON File") {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             let newSchema = {
-                description: "Auto-Generated JSON Schema for " + name + " (geokoord/json-schema-deriver)",
+                description: "Auto-Generated JSON Schema for " + name + " using json-schema-deriver (https://github.com/geokoord/json-schema-deriver)",
                 title: name,
                 additionalProperties: false,
                 $schema: "http://json-schema.org/draft-04/schema#",
