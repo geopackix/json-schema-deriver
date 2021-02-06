@@ -1,15 +1,19 @@
 const Schema = require('./../../build/app');
 
-(async () => {
-  let jsonSchema = await Schema.deriveSchema({
-    Name: "HelloWorld",
-    Age: 30,
-    Properties:{
-      Size: {test:123},
-      OptionId : "66askdhu816273"
-    },
-    Array: [1,2,3]
-  },'my test schema');
+let jsObj = {
+  UserId: "UUXX82620001",
+  Name: "Benjamin",
+  Properties:{
+    Size: 1.85,
+    Weight : 95,
+    Age: 30
+  },
+  Skills: ["Cycling","Fishing","Skiing"]
+}
 
-  console.log(JSON.stringify(jsonSchema))
-})();
+let main = async () => {
+  let jsonSchema = await Schema.deriveSchema(jsObj,'My Schema Name');
+  console.log(jsonSchema)
+}
+
+main();
