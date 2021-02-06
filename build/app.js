@@ -1,4 +1,5 @@
 "use strict";
+//const schemaBuilder = ()=>{return deriveSchema};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,12 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.schemaBuilder = void 0;
-const schemaBuilder = function () {
-    return deriveSchema;
-};
-exports.schemaBuilder = schemaBuilder;
-module.exports = exports.schemaBuilder;
+exports.deriveSchema = void 0;
 /**
  * This function creats a new schema body
  */
@@ -22,7 +18,7 @@ function getNewSchema(name = "JSON File") {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             let newSchema = {
-                description: "Auto-Generated JSON Schema for " + name + " using json-schema-deriver (https://github.com/geokoord/json-schema-deriver)",
+                description: "Auto-Generated JSON Schema for " + name + " using json-schema-deriver (https://github.com/geopackix/json-schema-deriver)",
                 title: name,
                 additionalProperties: false,
                 $schema: "http://json-schema.org/draft-04/schema#",
@@ -32,18 +28,19 @@ function getNewSchema(name = "JSON File") {
     });
 }
 /**
- * This function creats a new schema body
+ * This exported function creats a new schema body
  */
-function deriveSchema(inObj) {
+function deriveSchema(inObj, name = 'JSON File') {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-            let schemaHeader = yield getNewSchema();
+            let schemaHeader = yield getNewSchema(name);
             let schemaProperties = getObjectSchema(inObj);
             var schema = Object.assign({}, schemaHeader, schemaProperties);
             resolve(schema);
         }));
     });
 }
+exports.deriveSchema = deriveSchema;
 /**
  * This function creats property schema for the given inObject
  */

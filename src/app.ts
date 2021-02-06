@@ -1,9 +1,5 @@
 
-export const schemaBuilder = function(){
-  return deriveSchema;
-}
-
-module.exports = schemaBuilder;
+//const schemaBuilder = ()=>{return deriveSchema};
 
 /**
  * This function creats a new schema body
@@ -22,12 +18,12 @@ async function getNewSchema(name:string = "JSON File"){
 
 
 /**
- * This function creats a new schema body
+ * This exported function creats a new schema body 
  */
-async function deriveSchema(inObj){
+export async function deriveSchema(inObj, name:string = 'JSON File'){
   return new Promise(async (resolve, reject) => {
 
-    let schemaHeader = await getNewSchema();
+    let schemaHeader = await getNewSchema(name);
 
     let schemaProperties = getObjectSchema(inObj);
 

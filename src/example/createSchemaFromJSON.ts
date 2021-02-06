@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import {schemaBuilder} from './../app'
+import {deriveSchema} from './../app'
 
 (async () => {
   try {
@@ -16,7 +16,6 @@ import {schemaBuilder} from './../app'
     let inJsObj = await readInFile(inFile);
 
     //Derive schema from inJSON
-    let  deriveSchema = schemaBuilder();
     let Schema = await deriveSchema(inJsObj);
 
     await writeSchemaFile(outFile,Schema);
@@ -26,6 +25,7 @@ import {schemaBuilder} from './../app'
   } catch (e) {
       //Error output
       console.log(e);
+
   }
 })();
 
