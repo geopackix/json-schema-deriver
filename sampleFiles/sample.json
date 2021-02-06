@@ -1,0 +1,14 @@
+{
+  "$schema":"./sample.schema.json",
+  "name":"TestName",
+  "property1" : 18.5,
+  "NumberArray": [1,2,3,4,"Element"],
+  "ObjectArray":[
+    {
+      "ObjectId":"A123"
+    },
+    {
+      "ObjectId":"A458"
+    }
+  ]
+}
