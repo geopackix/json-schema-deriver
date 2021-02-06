@@ -23,7 +23,8 @@ const app_1 = require("./../app");
         //Read inFile
         let inJsObj = yield readInFile(inFile);
         //Derive schema from inJSON
-        let Schema = yield app_1.schemaBuilder.deriveSchema(inJsObj);
+        let deriveSchema = app_1.schemaBuilder();
+        let Schema = yield deriveSchema(inJsObj);
         yield writeSchemaFile(outFile, Schema);
         console.log('Successfully created JSON Schema.');
     }

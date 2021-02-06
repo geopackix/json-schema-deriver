@@ -1,6 +1,6 @@
 
-export const schemaBuilder = {
-  deriveSchema: deriveSchema
+export const schemaBuilder = function(){
+  return deriveSchema;
 }
 
 /**

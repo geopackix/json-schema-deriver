@@ -9,10 +9,9 @@
   },
   "scripts": {
     "build": "tsc --build",
-    "start": "tsc --build && node ./build//example//createSchemaFromJSON.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc --build && node ./build/example/createSchemaFromJSON.js"
   },
-  "author": "Geopackix",
+  "author": "Geopackix <manuel.hart@geokoord.com> (https://github.com/geopackix)",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.14.25",

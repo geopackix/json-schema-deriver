@@ -10,9 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.schemaBuilder = void 0;
-exports.schemaBuilder = {
-    deriveSchema: deriveSchema
+const schemaBuilder = function () {
+    return deriveSchema;
 };
+exports.schemaBuilder = schemaBuilder;
 /**
  * This function creats a new schema body
  */

@@ -16,7 +16,8 @@ import {schemaBuilder} from './../app'
     let inJsObj = await readInFile(inFile);
 
     //Derive schema from inJSON
-    let Schema = await schemaBuilder.deriveSchema(inJsObj);
+    let  deriveSchema = schemaBuilder();
+    let Schema = await deriveSchema(inJsObj);
 
     await writeSchemaFile(outFile,Schema);
 
