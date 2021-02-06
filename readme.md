@@ -2,7 +2,8 @@
 Derives JSON-Schema from a given JSON Sample
 
 ## Motivation
-
+This tool allows to derive a JSON schema from any given JSON object.
+It allows you to quickly specify JSON schemas using sample data.
 
 ## Installation
 
@@ -12,22 +13,39 @@ npm install json-schema-deriver
 
 ## Usage
 
+Using a given JS Object
 ```js
-const Schema = require('json-schema-deriver')();
+let jsObj = {
+  UserId: "UUXX82620001",
+  Name: "Benjamin",
+  Properties:{
+    Size: 1.85,
+    Weight : 95,
+    Age: 30
+  },
+  Skills: ["Cycling","Fishing","Skiing"]
+}
+```
+Synchronous
+```js
+const Schema = require('json-schema-deriver');
 
-(async () => {
-  let jsonSchema = await Schema({
-    Name: "HelloWorld",
-    Age: 30,
-    Properties:{
-      Size: 18,
-      OptionId : "66askdhu816273"
-    },
-    Array: [1,2,3]
-  });
-  console.log(jsonSchema)
-})();
+[...] 
 
+let jsonSchema = await Schema.deriveSchema(jsObj,'My Schema Name');
+console.log(jsonSchema)
+
+
+
+
+```
+
+Asynchronous
+```js
+let jsonSchema = Schema.deriveSchema(jsObj,'My Schema Name')
+.then(schema=>{
+  console.log(schema)
+});
 ```
 
 
