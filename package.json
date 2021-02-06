@@ -2,7 +2,10 @@
   "name": "json-schema-deriver",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/app.js",
+  "main": "build/app.js",
+  "directories": {
+    "build":"build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/geokoord/json-schema-deriver"
