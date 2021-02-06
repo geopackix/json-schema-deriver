@@ -14,6 +14,7 @@ const schemaBuilder = function () {
     return deriveSchema;
 };
 exports.schemaBuilder = schemaBuilder;
+module.exports = exports.schemaBuilder;
 /**
  * This function creats a new schema body
  */

@@ -3,6 +3,8 @@ export const schemaBuilder = function(){
   return deriveSchema;
 }
 
+module.exports = schemaBuilder;
+
 /**
  * This function creats a new schema body
  */
