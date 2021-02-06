@@ -1,12 +1,41 @@
 # JSON-Schema-Deriver
 Derives JSON-Schema from a given JSON Sample
 
+## Motivation
+
+
+## Installation
+
+```
+npm install json-schema-deriver
+```
+
+## Usage
+
+```js
+const Schema = require('json-schema-deriver')();
+
+(async () => {
+  let jsonSchema = await Schema({
+    Name: "HelloWorld",
+    Age: 30,
+    Properties:{
+      Size: 18,
+      OptionId : "66askdhu816273"
+    },
+    Array: [1,2,3]
+  });
+  console.log(jsonSchema)
+})();
+
+```
+
+
 ## Derive JSON Schema from sample JSON
 run the following command to derive JSON schema from input JSON file.
 ```
 node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
 ```
-
 
 ## Sample Data
 

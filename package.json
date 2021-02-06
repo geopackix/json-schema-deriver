@@ -4,17 +4,17 @@
   "description": "",
   "main": "build/app.js",
   "directories": {
-    "build":"build"
+    "build": "build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/geokoord/json-schema-deriver"
+    "url": "https://github.com/geopackix/json-schema-deriver"
   },
   "scripts": {
     "build": "tsc --build",
     "start": "tsc --build && node ./build/example/createSchemaFromJSON.js"
   },
-  "author": "Geopackix <manuel.hart@geokoord.com> (https://github.com/geopackix)",
+  "author": "Geopackix (https://github.com/geopackix)",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.14.25",
