@@ -11,7 +11,6 @@ npm install json-schema-deriver
 ```
 
 ## Usage
-
 Using a given JS Object
 ```js
 let jsObj = {
@@ -53,6 +52,8 @@ run the following command to derive JSON schema from input JSON file.
 ```
 node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
 ```
+## Known limitations
+* Arrays in multi dimentional arrays lead to undefined-element definition.
 
 ## Sample Data
 
@@ -178,4 +179,6 @@ node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
   }
 }
 ```
+
+
 

@@ -75,6 +75,8 @@ function getObjectSchema(inObject, schemaDefinitions?:any, parent?:string){
       //Object Item
       let itemDefinition = getObjectSchema(firstItem, schemaDefinitions);
 
+      
+
       let reference = null;
 
       let definitionName = getDefinitionByItem(itemDefinition.properties, schemaDefinitions);
