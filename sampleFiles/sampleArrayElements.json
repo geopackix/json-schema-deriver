@@ -1,0 +1,20 @@
+{
+  "$schema":"./sampleArrayElements.schema.json",
+  "ObjectArray":[
+    {
+      "ObjectId":"1",
+      "Name":"ArrayElement1",
+      "Weight": 10
+    },
+    {
+      "ObjectId":"2",
+      "Name":"ArrayElement2",
+      "Weight": 20
+    },
+    {
+      "ObjectId":"3",
+      "Name":"ArrayElement3",
+      "Size": 30
+    }
+  ]
+}
