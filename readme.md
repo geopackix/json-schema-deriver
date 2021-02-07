@@ -6,7 +6,6 @@ This tool allows to derive a JSON schema from any given JSON object.
 It allows you to quickly specify JSON schemas using sample data.
 
 ## Installation
-
 ```
 npm install json-schema-deriver
 ```
@@ -61,15 +60,23 @@ node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
 ```JSON
 {
   "$schema":"./sample.schema.json",
-  "name":"TestName",
-  "property1" : 18.5,
-  "NumberArray": [1,2,3,4,"Element"],
+  "name":"SchemaDeriverName",
+  "numberProp" : 18.5,
+  "NumberArray": [1,2,3,4],
   "ObjectArray":[
     {
-      "ObjectId":"A123"
+      "ObjectId":"7B3",
+      "InnerObjectArray":[
+        {
+          "name":"TestName",
+          "property1" : "18.5"
+          
+        }
+      ],
+      "InnerStringArray":["1","2","3"]
     },
     {
-      "ObjectId":"A458"
+      "ObjectId":"7B3"
     }
   ]
 }
@@ -78,7 +85,7 @@ node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
 ### Derived JSON-Schema
 ```JSON
 {
-  "description": "Auto-Generated JSON Schema for JSON File (geokoord/json-schema-deriver)",
+  "description": "Auto-Generated JSON Schema for JSON File using json-schema-deriver (https://github.com/geopackix/json-schema-deriver)",
   "title": "JSON File",
   "additionalProperties": false,
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -86,83 +93,87 @@ node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
   "properties": {
     "$schema": {
       "type": "string",
+      "description": "Description of $schema",
       "examples": [
         "./sample.schema.json"
       ]
     },
     "name": {
       "type": "string",
+      "description": "Description of name",
       "examples": [
-        "TestName"
+        "SchemaDeriverName"
       ]
     },
-    "property1": {
+    "numberProp": {
       "type": "number",
+      "description": "Description of numberProp",
       "examples": [
         18.5
       ]
     },
     "NumberArray": {
       "type": "array",
+      "description": "Description of NumberArray",
       "items": {
-        "0": {
-          "type": "number",
-          "examples": [
-            1
-          ]
-        },
-        "1": {
-          "type": "number",
-          "examples": [
-            2
-          ]
-        },
-        "2": {
-          "type": "number",
-          "examples": [
-            3
-          ]
-        },
-        "3": {
-          "type": "number",
-          "examples": [
-            4
-          ]
-        },
-        "4": {
-          "type": "string",
-          "examples": [
-            "Element"
-          ]
-        }
+        "type": "number"
       }
     },
     "ObjectArray": {
       "type": "array",
+      "description": "Description of ObjectArray",
       "items": {
-        "0": {
-          "type": "object",
-          "properties": {
-            "ObjectId": {
-              "type": "string",
-              "examples": [
-                "A123"
-              ]
-            }
+        "$ref": "#/definitions/ObjectArray-element"
+      }
+    }
+  },
+  "definitions": {
+    "InnerObjectArray-element": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Description of name",
+          "examples": [
+            "TestName"
+          ]
+        },
+        "property1": {
+          "type": "string",
+          "description": "Description of property1",
+          "examples": [
+            "18.5"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ObjectArray-element": {
+      "type": "object",
+      "properties": {
+        "ObjectId": {
+          "type": "string",
+          "description": "Description of ObjectId",
+          "examples": [
+            "7B3"
+          ]
+        },
+        "InnerObjectArray": {
+          "type": "array",
+          "description": "Description of InnerObjectArray",
+          "items": {
+            "$ref": "#/definitions/InnerObjectArray-element"
           }
         },
-        "1": {
-          "type": "object",
-          "properties": {
-            "ObjectId": {
-              "type": "string",
-              "examples": [
-                "A458"
-              ]
-            }
+        "InnerStringArray": {
+          "type": "array",
+          "description": "Description of InnerStringArray",
+          "items": {
+            "type": "string"
           }
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }

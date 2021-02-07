@@ -1,14 +1,22 @@
 {
   "$schema":"./sample.schema.json",
-  "name":"TestName",
-  "property1" : 18.5,
-  "NumberArray": [1,2,3,4,"Element"],
+  "name":"SchemaDeriverName",
+  "numberProp" : 18.5,
+  "NumberArray": [1,2,3,4],
   "ObjectArray":[
     {
-      "ObjectId":"A123"
+      "ObjectId":"7B3",
+      "InnerObjectArray":[
+        {
+          "name":"TestName",
+          "property1" : "18.5"
+          
+        }
+      ],
+      "InnerStringArray":["1","2","3"]
     },
     {
-      "ObjectId":"A458"
+      "ObjectId":"7B3"
     }
   ]
 }

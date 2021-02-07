@@ -71,24 +71,33 @@ function getObjectSchema(inObject, schemaDefinitions, parent) {
     //If type is 'object' or 'array' recusive call of function.
     if (objectSchema.type == 'array') {
         let firstItem = inObject[0];
-        let itemDefinition = getObjectSchema(firstItem, schemaDefinitions);
-        let reference = null;
-        let definitionName = getDefinitionByItem(itemDefinition.properties, schemaDefinitions);
-        //Find matching definition for array items
-        if (definitionName) {
-            //add reference
-            reference = definitionName;
+        if (typeof firstItem == 'object') {
+            //Object Item
+            let itemDefinition = getObjectSchema(firstItem, schemaDefinitions);
+            let reference = null;
+            let definitionName = getDefinitionByItem(itemDefinition.properties, schemaDefinitions);
+            //Find matching definition for array items
+            if (definitionName) {
+                //add reference
+                reference = definitionName;
+            }
+            else {
+                //create definition
+                schemaDefinitions[parent + '-element'] = itemDefinition;
+                schemaDefinitions[parent + '-element']["additionalProperties"] = false;
+                //add reference
+                reference = '#/definitions/' + parent + '-element';
+            }
+            objectSchema.items = {
+                $ref: reference
+            };
         }
         else {
-            //create definition
-            schemaDefinitions[parent + '-element'] = itemDefinition;
-            schemaDefinitions[parent + '-element']["additionalProperties"] = false;
-            //add reference
-            reference = '#/definitions/' + parent + '-element';
+            //Simple Item
+            objectSchema.items = {
+                type: typeof firstItem
+            };
         }
-        objectSchema.items = {
-            $ref: reference
-        };
     }
     else if (objectSchema.type == 'object') {
         objectSchema.properties = {};

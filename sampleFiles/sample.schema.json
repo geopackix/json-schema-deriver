@@ -16,12 +16,12 @@
       "type": "string",
       "description": "Description of name",
       "examples": [
-        "TestName"
+        "SchemaDeriverName"
       ]
     },
-    "property1": {
+    "numberProp": {
       "type": "number",
-      "description": "Description of property1",
+      "description": "Description of numberProp",
       "examples": [
         18.5
       ]
@@ -30,7 +30,7 @@
       "type": "array",
       "description": "Description of NumberArray",
       "items": {
-        "$ref": "#/definitions/NumberArray-element"
+        "type": "number"
       }
     },
     "ObjectArray": {
@@ -42,11 +42,24 @@
     }
   },
   "definitions": {
-    "NumberArray-element": {
-      "type": "number",
-      "examples": [
-        1
-      ],
+    "InnerObjectArray-element": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Description of name",
+          "examples": [
+            "TestName"
+          ]
+        },
+        "property1": {
+          "type": "string",
+          "description": "Description of property1",
+          "examples": [
+            "18.5"
+          ]
+        }
+      },
       "additionalProperties": false
     },
     "ObjectArray-element": {
@@ -56,8 +69,22 @@
           "type": "string",
           "description": "Description of ObjectId",
           "examples": [
-            "A123"
+            "7B3"
           ]
+        },
+        "InnerObjectArray": {
+          "type": "array",
+          "description": "Description of InnerObjectArray",
+          "items": {
+            "$ref": "#/definitions/InnerObjectArray-element"
+          }
+        },
+        "InnerStringArray": {
+          "type": "array",
+          "description": "Description of InnerStringArray",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "additionalProperties": false
