@@ -1,1 +1,66 @@
-{"description":"Auto-Generated JSON Schema for JSON File using json-schema-deriver (https://github.com/geopackix/json-schema-deriver)","title":"JSON File","additionalProperties":false,"$schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"$schema":{"type":"string","description":"Description of $schema","examples":["./sample.schema.json"]},"name":{"type":"string","description":"Description of name","examples":["TestName"]},"property1":{"type":"number","description":"Description of property1","examples":[18.5]},"NumberArray":{"type":"array","description":"Description of NumberArray","items":{"$ref":"#/definitions/NumberArray-element"}},"ObjectArray":{"type":"array","description":"Description of ObjectArray","items":{"$ref":"#/definitions/ObjectArray-element"}}},"definitions":{"NumberArray-element":{"type":"number","examples":[1]},"ObjectArray-element":{"type":"object","properties":{"ObjectId":{"type":"string","description":"Description of ObjectId","examples":["A123"]}}}}}
+{
+  "description": "Auto-Generated JSON Schema for JSON File using json-schema-deriver (https://github.com/geopackix/json-schema-deriver)",
+  "title": "JSON File",
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Description of $schema",
+      "examples": [
+        "./sample.schema.json"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Description of name",
+      "examples": [
+        "TestName"
+      ]
+    },
+    "property1": {
+      "type": "number",
+      "description": "Description of property1",
+      "examples": [
+        18.5
+      ]
+    },
+    "NumberArray": {
+      "type": "array",
+      "description": "Description of NumberArray",
+      "items": {
+        "$ref": "#/definitions/NumberArray-element"
+      }
+    },
+    "ObjectArray": {
+      "type": "array",
+      "description": "Description of ObjectArray",
+      "items": {
+        "$ref": "#/definitions/ObjectArray-element"
+      }
+    }
+  },
+  "definitions": {
+    "NumberArray-element": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "additionalProperties": false
+    },
+    "ObjectArray-element": {
+      "type": "object",
+      "properties": {
+        "ObjectId": {
+          "type": "string",
+          "description": "Description of ObjectId",
+          "examples": [
+            "A123"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

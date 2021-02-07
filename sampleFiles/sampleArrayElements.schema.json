@@ -18,6 +18,20 @@
       "items": {
         "$ref": "#/definitions/ObjectArray-element"
       }
+    },
+    "ObjectArray2": {
+      "type": "array",
+      "description": "Description of ObjectArray2",
+      "items": {
+        "$ref": "#/definitions/ObjectArray2-element"
+      }
+    },
+    "ObjectArray3": {
+      "type": "array",
+      "description": "Description of ObjectArray3",
+      "items": {
+        "$ref": "#/definitions/ObjectArray2-element"
+      }
     }
   },
   "definitions": {
@@ -41,6 +55,33 @@
         "Weight": {
           "type": "number",
           "description": "Description of Weight",
+          "examples": [
+            10
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ObjectArray2-element": {
+      "type": "object",
+      "properties": {
+        "ObjectId": {
+          "type": "string",
+          "description": "Description of ObjectId",
+          "examples": [
+            "1"
+          ]
+        },
+        "Name": {
+          "type": "string",
+          "description": "Description of Name",
+          "examples": [
+            "ArrayElement1"
+          ]
+        },
+        "Size": {
+          "type": "number",
+          "description": "Description of Size",
           "examples": [
             10
           ]

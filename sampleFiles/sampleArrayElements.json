@@ -16,5 +16,19 @@
       "Name":"ArrayElement3",
       "Size": 30
     }
+  ],
+  "ObjectArray2":[
+    {
+      "ObjectId":"1",
+      "Name":"ArrayElement1",
+      "Size": 10
+    }
+  ],
+  "ObjectArray3":[
+    {
+      "ObjectId":"1",
+      "Name":"ArrayElement1",
+      "Size": 10
+    }
   ]
 }

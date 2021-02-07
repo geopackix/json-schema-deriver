@@ -70,34 +70,25 @@ function getObjectSchema(inObject, schemaDefinitions, parent) {
     }
     //If type is 'object' or 'array' recusive call of function.
     if (objectSchema.type == 'array') {
-        let reference = '#/definitions/' + parent + '-element';
+        let firstItem = inObject[0];
+        let itemDefinition = getObjectSchema(firstItem, schemaDefinitions);
+        let reference = null;
+        let definitionName = getDefinitionByItem(itemDefinition.properties, schemaDefinitions);
+        //Find matching definition for array items
+        if (definitionName) {
+            //add reference
+            reference = definitionName;
+        }
+        else {
+            //create definition
+            schemaDefinitions[parent + '-element'] = itemDefinition;
+            schemaDefinitions[parent + '-element']["additionalProperties"] = false;
+            //add reference
+            reference = '#/definitions/' + parent + '-element';
+        }
         objectSchema.items = {
             $ref: reference
         };
-        for (let item of inObject) {
-            let definition = getObjectSchema(item, schemaDefinitions);
-            let availableDefinitions = getDefinitionByName(reference, schemaDefinitions);
-            if (availableDefinitions) {
-                //Compare Schema
-                let compDefinitions = getDefinitionByItem(item, schemaDefinitions);
-                if (!compDefinitions) {
-                    console.log('Found different kind of array elements in array ' + reference);
-                    //schemaDefinitions[parent+'-element-1'] = definition;
-                }
-                else {
-                    console.log('schema is already available');
-                }
-            }
-            else {
-                schemaDefinitions[parent + '-element'] = definition;
-                schemaDefinitions[parent + '-element']["additionalProperties"] = false;
-                console.log('Found new schema definition.');
-            }
-        }
-        //Generic check all array elements
-        /*for (let propertyName in inObject){
-          objectSchema.items[propertyName] = getObjectSchema(inObject[propertyName], schemaDefinitions, propertyName);
-        }*/
     }
     else if (objectSchema.type == 'object') {
         objectSchema.properties = {};
@@ -110,22 +101,9 @@ function getObjectSchema(inObject, schemaDefinitions, parent) {
 /**
  * Check if schema definition by name is already available
  */
-function getDefinitionByName(name, schemaDefinitions) {
-    //"name": "#/definitions/ObjectArray-element"
-    let splitedDefinitionPath = name.split('#/definitions')[1].split('/');
-    let definitionpath = "";
-    for (let path of splitedDefinitionPath) {
-        definitionpath += path;
-    }
-    return schemaDefinitions[definitionpath];
-}
-;
-/**
- * Check if schema definition by name is already available
- */
 function getDefinitionByItem(item, schemaDefinitions) {
     //extract child elements of object
-    let itemChildTypes = getChildItemTypes(item);
+    let itemChildTypes = getChildItemTypesByDefinition(item);
     let itemChildNames = getChildItemNames(item);
     for (let def in schemaDefinitions) {
         let defItems = getChildItemTypesByDefinition(schemaDefinitions[def].properties);
@@ -133,19 +111,10 @@ function getDefinitionByItem(item, schemaDefinitions) {
         let comp = compareArrays(itemChildTypes, defItems);
         let comp2 = compareArrays(itemChildNames, defNames);
         if (comp && comp2) {
-            return def;
+            return '#/definitions/' + def;
         }
     }
     return false;
-}
-;
-function getChildItemTypes(item) {
-    //extract child elements of object
-    let items = [];
-    for (let c in item) {
-        items.push(typeof item[c]);
-    }
-    return items;
 }
 ;
 function getChildItemTypesByDefinition(item) {
