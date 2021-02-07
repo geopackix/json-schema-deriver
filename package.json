@@ -1,6 +1,6 @@
 {
   "name": "json-schema-deriver",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "build/app.js",
   "directories": {
