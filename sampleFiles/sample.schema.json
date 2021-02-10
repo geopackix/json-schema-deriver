@@ -1,1 +1,93 @@
-{"description":"Auto-Generated JSON Schema for JSON File using json-schema-deriver (https://github.com/geopackix/json-schema-deriver)","title":"JSON File","additionalProperties":false,"$schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"$schema":{"type":"string","description":"Description of $schema","examples":["./sample.schema.json"]},"name":{"type":"string","description":"Description of name","examples":["SchemaDeriverName"]},"numberProp":{"type":"number","description":"Description of numberProp","examples":[18.5]},"NumberArray":{"type":"array","description":"Description of NumberArray","items":{"type":"number"}},"ObjectArray":{"type":"array","description":"Description of ObjectArray","items":{"$ref":"#/definitions/ObjectArray-element"}}},"definitions":{"InnerObjectArray-element":{"type":"object","properties":{"name":{"type":"string","description":"Description of name","examples":["TestName"]},"property1":{"type":"string","description":"Description of property1","examples":["18.5"]}},"additionalProperties":false},"ObjectArray-element":{"type":"object","properties":{"ObjectId":{"type":"string","description":"Description of ObjectId","examples":["7B3"]},"InnerObjectArray":{"type":"array","description":"Description of InnerObjectArray","items":{"$ref":"#/definitions/InnerObjectArray-element"}},"InnerStringArray":{"type":"array","description":"Description of InnerStringArray","items":{"type":"string"}}},"additionalProperties":false}}}
+{
+  "description": "Auto-Generated JSON Schema for JSON File using json-schema-deriver (https://github.com/geopackix/json-schema-deriver)",
+  "title": "JSON File",
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Description of $schema",
+      "examples": [
+        "./sample.schema.json"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Description of name",
+      "examples": [
+        "SchemaDeriverName"
+      ]
+    },
+    "numberProp": {
+      "type": "number",
+      "description": "Description of numberProp",
+      "examples": [
+        18.5
+      ]
+    },
+    "NumberArray": {
+      "type": "array",
+      "description": "Description of NumberArray",
+      "items": {
+        "type": "number"
+      }
+    },
+    "ObjectArray": {
+      "type": "array",
+      "description": "Description of ObjectArray",
+      "items": {
+        "$ref": "#/definitions/ObjectArray-element"
+      }
+    }
+  },
+  "definitions": {
+    "InnerObjectArray-element": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Description of name",
+          "examples": [
+            "TestName"
+          ]
+        },
+        "property1": {
+          "type": "string",
+          "description": "Description of property1",
+          "examples": [
+            "18.5"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ObjectArray-element": {
+      "type": "object",
+      "properties": {
+        "ObjectId": {
+          "type": "string",
+          "description": "Description of ObjectId",
+          "examples": [
+            "7B3"
+          ]
+        },
+        "InnerObjectArray": {
+          "type": "array",
+          "description": "Description of InnerObjectArray",
+          "items": {
+            "$ref": "#/definitions/InnerObjectArray-element"
+          }
+        },
+        "InnerStringArray": {
+          "type": "array",
+          "description": "Description of InnerStringArray",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
