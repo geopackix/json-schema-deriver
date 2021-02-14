@@ -1,63 +1,100 @@
 # JSON-Schema-Deriver
-Derives JSON-Schema from a given JSON Sample
+
+_Derives JSON-Schema from a given JSON Sample_
+
+### Table of Contents
+
+- [Motivation](#motivation)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Derive JSON Schema from sample JSON](#derive-json-schema-from-sample-JSON)
+- [Known limitations](#known-limitations)
+- [Sample Data](#sample-data)
 
 ## Motivation
+
 This tool allows to derive a JSON schema from any given JSON object.
-It allows you to quickly specify JSON schemas using sample data.
+It allows you to quickly specify JSON schemas using sample data as a baseline for a schema specification.
 
 ## Installation
+
 ```
 npm install json-schema-deriver
 ```
 
 ## Usage
+
 Using a given JS Object
+
 ```js
-let jsObj = {
-  UserId: "UUXX82620001",
-  Name: "Benjamin",
-  Properties:{
-    Size: 1.85,
-    Weight : 95,
-    Age: 30
+let obj = {
+  name: "json-schema-deriver",
+  version: "1.0.6",
+  description: "",
+  main: "build/app.js",
+  directories: {
+    build: "build",
   },
-  Skills: ["Cycling","Fishing","Skiing"]
-}
+  repository: {
+    type: "git",
+    url: "https://github.com/geopackix/json-schema-deriver",
+  },
+  scripts: {
+    build: "tsc --build",
+    start: "tsc --build && node ./build/example/createSchemaFromJSON.js",
+  },
+  author: "Geopackix (https://github.com/geopackix)",
+  license: "MIT",
+  devDependencies: {
+    typescript: "^4.1.3",
+  },
+  keywords: ["json", "json-schema", "schema", "deriver"],
+};
 ```
+
 Synchronous
+
 ```js
 const Schema = require('json-schema-deriver');
 
-[...] 
+[...]
 
-let jsonSchema = await Schema.deriveSchema(jsObj,'My Schema Name');
+let jsonSchema = await Schema.deriveSchema(obj,'Package.json Schema');
 console.log(jsonSchema)
-
-
-
-
 ```
 
 Asynchronous
+
 ```js
-let jsonSchema = Schema.deriveSchema(jsObj,'My Schema Name')
-.then(schema=>{
-  console.log(schema)
-});
+let jsonSchema = Schema.deriveSchema(obj, "Package.json Schema").then(
+  (schema) => {
+    console.log(schema);
+  }
+);
 ```
 
-
 ## Derive JSON Schema from sample JSON
-run the following command to derive JSON schema from input JSON file.
+
+Run the following command to derive JSON schema from input JSON file.
+
+```
+node createSchemaFromJSON.js <sample file.json>
+```
+
+Example
+
 ```
 node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
 ```
+
 ## Known limitations
-* Arrays in multi dimentional arrays lead to undefined-element definition.
+
+- Arrays in multi dimentional arrays lead to undefined-element definition.
 
 ## Sample Data
 
 ### JSON
+
 ```JSON
 {
   "$schema":"./sample.schema.json",
@@ -71,7 +108,7 @@ node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
         {
           "name":"TestName",
           "property1" : "18.5"
-          
+
         }
       ],
       "InnerStringArray":["1","2","3"]
@@ -84,6 +121,7 @@ node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
 ```
 
 ### Derived JSON-Schema
+
 ```JSON
 {
   "description": "Auto-Generated JSON Schema for JSON File using json-schema-deriver (https://github.com/geopackix/json-schema-deriver)",
@@ -179,6 +217,3 @@ node .\build\example\createSchemaFromJSON.js .\sampleFiles\sampleBattery.json
   }
 }
 ```
-
-
-
